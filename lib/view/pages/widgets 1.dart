@@ -1,5 +1,13 @@
+//import 'package:aesthetic_dialogs/aesthetic_dialogs.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+//import 'package:whatsapp/whatsapp.dart';
+//import 'dart:async';
+class Whatsappp {
+  String number;
+  Whatsappp({required this.number});
+}
 
 void main() {
   runApp(const MyApp());
@@ -10,10 +18,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    // ignore: prefer_const_constructors
+    return MaterialApp(
+      // color: const Color.fromARGB(25,2,54,200),
       debugShowCheckedModeBanner: false,
-      home: NewPage(),
+      home: const NewPage(),
     );
+  }
+}
+
+class Clipper extends CustomClipper<Rect> {
+  @override
+  Rect getClip(Size size) {
+    return const Rect.fromLTRB(12, 12, 12, 12);
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Rect> oldClipper) {
+    return const bool.hasEnvironment(AutofillHints.birthday);
   }
 }
 
@@ -25,6 +47,9 @@ class NewPage extends StatefulWidget {
 }
 
 class _NewPageState extends State<NewPage> {
+  // WhatsApp whatsApp = WhatsApp();
+  final List<Whatsappp> _whatsapp = [];
+
   double addingElement = 10;
   void _pressed() {
     setState(() {
@@ -44,6 +69,15 @@ class _NewPageState extends State<NewPage> {
     });
   }
 
+  //_call() async {
+  //  // String options = no;
+  //  await whatsApp.messagesReply(
+  //    to: 9876543210,
+  //    message: "Hello",
+  //  );
+  //}
+
+  final TextEditingController _controller = TextEditingController();
   final GlobalKey<AnimatedListState> _key = GlobalKey();
 
   @override
@@ -295,7 +329,66 @@ class _NewPageState extends State<NewPage> {
                     ),
                   )
                 ],
-              )
+              ),
+              //  const Spacer(),
+              Chip(
+                shape: const BeveledRectangleBorder(),
+                //surfaceTintColor: Colors.blue,
+                deleteIconColor: Colors.pink,
+                deleteButtonTooltipMessage: "Deleted",
+                //materialTapTargetSize: MaterialTapTargetSize.values.last,
+                side: const BorderSide(color: Colors.pink, width: 2),
+                elevation: 10,
+                deleteIcon: const Icon(Icons.menu),
+                shadowColor: Colors.pink[400],
+                backgroundColor: Colors.grey.shade100,
+                label: const Text("Chip"),
+                avatar: const CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: 12,
+                  backgroundImage: NetworkImage(
+                      "https://images.pexels.com/photos/5644293/pexels-photo-5644293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                  child: Text("D"),
+                ),
+              ),
+              const ActionChip(
+                tooltip: "Selected",
+                elevation: 10,
+                shape: StadiumBorder(
+                  side: BorderSide(width: 1, color: Colors.redAccent),
+                ),
+                // disabledColor: Colors.grey,
+                backgroundColor: Colors.pink,
+                label: Text("ActionChip"),
+                avatar: CircleAvatar(
+                  child: Icon(Icons.accessibility_outlined),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: 200,
+                    child: TextField(
+                      controller: _controller,
+                      decoration:
+                          const InputDecoration(hintText: "Add Phone Number"),
+                    ),
+                  ),
+                  MaterialButton(
+                    animationDuration: const Duration(seconds: 3),
+                    // hoverColor: Colors.green,
+                    elevation: 7,
+                    onPressed: () {},
+                    color: Colors.green,
+                    child: const Icon(
+                      Icons.wechat_outlined,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+              const Divider(),
             ],
           ),
         ),

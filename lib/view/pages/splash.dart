@@ -1,4 +1,5 @@
 import 'dart:async';
+//import 'package:aesthetic_dialogs/aesthetic_dialogs.dart';
 import 'package:block_box/view/pages/bottomNaviBar/naviBar.dart';
 import 'package:flutter/material.dart';
 
@@ -78,6 +79,7 @@ class _SplashState extends State<Splash> {
                     )
                   ],
                 ),
+                // ElevatedButton(onPressed: null, child: const Text("Aesthetic"))
               ],
             ),
           ),
@@ -85,4 +87,17 @@ class _SplashState extends State<Splash> {
       ),
     );
   }
+
+  //Future<void> aestheticDialog() async {
+  //  AestheticDialogs.showDialog(
+  //      dialogType: DialogType.SUCCESS,
+  //      dialogStyle: DialogStyle.EMOJI,
+  //      dialogGravity: DialogGravity.CENTER,
+  //      dialogAnimation: DialogAnimation.SWIPE_LEFT,
+  //      duration: 4000,
+  //      title: "Aesthetic",
+  //      message: "Title",
+  //      cancelable: true,
+  //      darkMode: false);
+  //}
 }
